@@ -34,7 +34,7 @@ public class Calculator implements ActionListener {
     Calculator(){
     
         frame = new JFrame("Calculator");
-        ImageIcon icon = new ImageIcon ( Toolkit.getDefaultToolkit().getImage(getClass().getResource("Calculator.png")));
+        
         
 //        java.net.URL url = this.getClass().getResource("Calculator.png");
 //
@@ -42,7 +42,7 @@ public class Calculator implements ActionListener {
 //        Image img = kit.createImage(url);
         
         
-        frame.setIconImage(icon.getImage());
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(("Calculator.png")));
         frame.setSize(250,400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
