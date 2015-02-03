@@ -18,7 +18,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- *
+
  * @author madhavchhura
  */
 public class Calculator implements ActionListener {
@@ -30,18 +30,16 @@ public class Calculator implements ActionListener {
     String number1 = "", oper;
     boolean operSelected = false;
     String localLabel = null;
+//    private final String[]  toppings = {"7", "8", "9", "/", 
+//                                        "4", "5", "6", "*",
+//                                        "1", "2", "3", "-",
+//                                        "0"};
     
+    @SuppressWarnings("empty-statement")
     Calculator(){
     
         frame = new JFrame("Calculator");
-        
-        
-//        java.net.URL url = this.getClass().getResource("Calculator.png");
-//
-//        Toolkit kit = Toolkit.getDefaultToolkit();
-//        Image img = kit.createImage(url);
-        
-        
+
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage(("Calculator.png")));
         frame.setSize(250,400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,7 +55,8 @@ public class Calculator implements ActionListener {
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4,4));
         
-        
+
+             
        
         //Buttons Array for digits 0 ~ 9.
         JButton[] buttons = new JButton[10]; 
