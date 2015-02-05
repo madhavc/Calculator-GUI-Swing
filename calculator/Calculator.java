@@ -30,10 +30,8 @@ public class Calculator implements ActionListener {
     String number1 = "", oper;
     boolean operSelected = false;
     String localLabel = null;
-//    private final String[]  toppings = {"7", "8", "9", "/", 
-//                                        "4", "5", "6", "*",
-//                                        "1", "2", "3", "-",
-//                                        "0"};
+    int result = Integer.MIN_VALUE;
+
     
     @SuppressWarnings("empty-statement")
     Calculator(){
@@ -110,6 +108,7 @@ public class Calculator implements ActionListener {
         buttonPanel.add(clearButton);
         buttonPanel.add(equalsButton);
         buttonPanel.add(addButton);
+
         
         //Sets equalsButton to be the default button which can also be used with
         //a enter key.
@@ -127,7 +126,7 @@ public class Calculator implements ActionListener {
                     switch (operAction.operator) {
                         case "/":
                             if(temp1 != 0){
-                                int result = temp / temp1;
+                                result = temp / temp1;
                                 text = "" + result;
                                 textField.setText("" + result);
                             }
@@ -136,7 +135,7 @@ public class Calculator implements ActionListener {
                             break;
                         case "*":
                             {
-                                int result = temp * temp1;
+                                result = temp * temp1;
                                 text = "" + result;
                                 if(text.length() > 10){
                                    textField.setText("Overflow");          
@@ -147,7 +146,7 @@ public class Calculator implements ActionListener {
                             }
                         case "+":
                             {
-                                int result = temp + temp1;
+                                result = temp + temp1;
                                 text = "" + result;
                                 if(text.length() > 10){
                                    textField.setText("Overflow");          
@@ -158,7 +157,7 @@ public class Calculator implements ActionListener {
                             }
                         case "-":
                             {
-                                int result = temp - temp1;
+                                result = temp - temp1;
                                 text = "" + result;
                                 textField.setText("" + result);
                                 break;
@@ -174,16 +173,28 @@ public class Calculator implements ActionListener {
         
         //Set frame visibility to true.
         frame.setVisible(true);
-                
+        
     }
     @Override
-    public void actionPerformed(ActionEvent event){
-        if(event.getActionCommand().equals(localLabel)){
-            text = "";
-            number1 = "";
-            operSelected = false;
-            textField.setText("");    
+    public void actionPerformed(ActionEvent event) {
+       
+        if(event.getActionCommand().equals(localLabel) ){
+            if(event.getModifiers() == 18){
+                textField.setText("(c) 2015 Madhav Chhura"); 
+                text = "";
+                number1 = "";
+                operSelected = false;
+                result = Integer.MIN_VALUE;
+            }
+            else{
+                text = "";
+                number1 = "";
+                operSelected = false;
+                result = Integer.MIN_VALUE;
+                textField.setText("");
+            }    
         }
+
         else if(text.length() > 9){
             textField.setText("Overflow");
             text = "";
@@ -191,9 +202,18 @@ public class Calculator implements ActionListener {
     
         }
         else{
-            String action = event.getActionCommand();
-            text =  text + action;
-            textField.setText(text);     
+            if (result == Integer.MIN_VALUE){
+                String action = event.getActionCommand();
+                text =  text + action;
+                textField.setText(text);
+            }
+            else{
+                text = "";
+                result = Integer.MIN_VALUE;
+                String action = event.getActionCommand();
+                text =  text + action;
+                textField.setText(text);
+            }
         }
     }
     
